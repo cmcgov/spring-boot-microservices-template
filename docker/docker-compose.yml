@@ -1,0 +1,23 @@
+discovery:
+  image: cmcgov/discovery-service
+  ports:
+   - "8761:8761"
+configserver:
+  image: cmcgov/configuration-service
+  ports:
+   - "8888:8888"
+  links:
+   - discovery
+gateway:
+  image: cmcgov/api-gateway-service
+  ports:
+   - "10000:10000"
+  links:
+   - discovery
+   - configserver
+   - user
+user:
+  image: cmcgov/users-service
+  links:
+   - discovery
+   - configserver
