@@ -8,6 +8,13 @@ configserver:
    - "8888:8888"
   links:
    - discovery
+user:
+  image: cmcgov/users-service
+  links:
+   - discovery
+   - configserver
+  ports:
+   - "9000:9000"
 gateway:
   image: cmcgov/api-gateway-service
   ports:
@@ -16,8 +23,3 @@ gateway:
    - discovery
    - configserver
    - user
-user:
-  image: cmcgov/users-service
-  links:
-   - discovery
-   - configserver

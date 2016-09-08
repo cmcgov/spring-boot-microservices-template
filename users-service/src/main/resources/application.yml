@@ -11,7 +11,3 @@ eureka:
 ribbon:
   eureka:
     enabled: true
-
-spring:
-  application:
-    name: users-service
